@@ -13,13 +13,14 @@ public class Doador {
     private Long idDoador;
     private String nomeCompleto;
     private LocalDateTime dataNascimento;
-
-
     private TipoSanguineo tipoSanguineo;
 
     @OneToOne
     @JoinColumn(name = "id_usuario_doador")
     private Usuario usuario;
+
+    @OneToOne(mappedBy = "doador")
+    private Endereco endereco;
 
     public Doador(){}
 
@@ -56,6 +57,23 @@ public class Doador {
     public void setUsuario(Usuario usuario) {
         this.usuario = usuario;
     }
+
+    public String getNomeCompleto() {
+        return nomeCompleto;
+    }
+
+    public void setNomeCompleto(String nomeCompleto) {
+        this.nomeCompleto = nomeCompleto;
+    }
+
+    public Endereco getEndereco() {
+        return endereco;
+    }
+
+    public void setEndereco(Endereco endereco) {
+        this.endereco = endereco;
+    }
+
 
     @Override
     public boolean equals(Object o) {
