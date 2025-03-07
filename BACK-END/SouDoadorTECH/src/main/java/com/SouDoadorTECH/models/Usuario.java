@@ -3,6 +3,8 @@ package com.SouDoadorTECH.models;
 
 import jakarta.persistence.*;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 
 @Entity
@@ -17,6 +19,8 @@ public class Usuario {
     @OneToOne(mappedBy = "usuario")
     private Doador doador;
 
+    @OneToMany(mappedBy = "usuario")
+    private List<PedidoDoacao> pedidosDoacoes = new ArrayList<>();
 
     public Usuario(){}
 
@@ -51,6 +55,22 @@ public class Usuario {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public Doador getDoador() {
+        return doador;
+    }
+
+    public void setDoador(Doador doador) {
+        this.doador = doador;
+    }
+
+    public List<PedidoDoacao> getPedidosDoacoes() {
+        return pedidosDoacoes;
+    }
+
+    public void setPedidosDoacoes(List<PedidoDoacao> pedidosDoacoes) {
+        this.pedidosDoacoes = pedidosDoacoes;
     }
 
     @Override

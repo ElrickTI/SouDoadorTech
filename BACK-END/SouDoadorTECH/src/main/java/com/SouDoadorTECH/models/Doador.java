@@ -3,6 +3,8 @@ package com.SouDoadorTECH.models;
 import jakarta.persistence.*;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 
 @Entity
@@ -21,6 +23,9 @@ public class Doador {
 
     @OneToOne(mappedBy = "doador")
     private Endereco endereco;
+
+    @OneToMany(mappedBy = "doador")
+    private List<Doacao> doacoes = new ArrayList<>();
 
     public Doador(){}
 
@@ -74,6 +79,13 @@ public class Doador {
         this.endereco = endereco;
     }
 
+    public List<Doacao> getDoacoes() {
+        return doacoes;
+    }
+
+    public void setDoacoes(List<Doacao> doacoes) {
+        this.doacoes = doacoes;
+    }
 
     @Override
     public boolean equals(Object o) {
