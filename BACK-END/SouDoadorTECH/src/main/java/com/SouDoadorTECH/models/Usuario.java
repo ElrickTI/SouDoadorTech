@@ -1,10 +1,7 @@
 package com.SouDoadorTECH.models;
 
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 
 import java.util.Objects;
 
@@ -14,10 +11,11 @@ public class Usuario {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long idUsuario;
-    private String nomeCompleto;
     private String usuario;
     private String senha;
     private String email;
+    @OneToOne(mappedBy = "usuario")
+    private Doador doador;
 
 
     public Usuario(){}
@@ -30,13 +28,6 @@ public class Usuario {
         this.idUsuario = idUsuario;
     }
 
-    public String getNomeCompleto() {
-        return nomeCompleto;
-    }
-
-    public void setNomeCompleto(String nomeCompleto) {
-        this.nomeCompleto = nomeCompleto;
-    }
 
     public String getUsuario() {
         return usuario;
